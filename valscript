@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# ValueScript by pinapel-dev123
+val=0
+file_vs="$1"
+
+if [ ! -f "$file_vs" ]; then
+    echo "Error: File $file_vs not found!"
+    exit 1
+fi
+
+echo "Start Value: $val"
+
+while IFS= read -r num || [ -n "$angka" ]; do
+    
+    if [ -z "$num" ]; then
+        continue
+    else
+        let "val=val+$num"
+        echo "$val"
+    fi
+done < "$file_vs"
+echo "End Value: $val"
